@@ -17,7 +17,7 @@ available [here](https://docs.docker.com/engine/install/).
 Then, you will need to set up the [`forklift`](https://github.com/PlanktoScope/forklift) tool on
 your computer. Setup instructions are available
 [here](https://github.com/PlanktoScope/forklift?tab=readme-ov-file#downloadinstall-forklift). Note
-that currently `forklift` is only tested and built for Linux computers.
+that currently `forklift` is only tested for Linux computers.
 
 ### Deployment
 
@@ -40,7 +40,7 @@ deployments.
 
 If your user is [in the `docker` group](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
 (so that you don't need to use `sudo` when running `docker`
-commands), then you can just run a single command instead of the two the commands listed above:
+commands), then you can just run a single command instead of the three commands listed above:
 
 ```
 forklift plt switch github.com/PlanktoScope/pallet-segmenter@main
