@@ -14,8 +14,8 @@ any Docker host.
 You will need to have the Docker Engine installed on your computer. Installation instructions are
 available [here](https://docs.docker.com/engine/install/).
 
-Then, you will set up the [`forklift`](https://github.com/PlanktoScope/forklift) tool on your
-computer. Setup instructions are available
+Then, you will need to set up the [`forklift`](https://github.com/PlanktoScope/forklift) tool on
+your computer. Setup instructions are available
 [here](https://github.com/PlanktoScope/forklift?tab=readme-ov-file#downloadinstall-forklift). Note
 that currently `forklift` is only tested and built for Linux computers.
 
