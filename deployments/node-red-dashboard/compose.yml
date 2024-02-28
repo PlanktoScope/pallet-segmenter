@@ -1,0 +1,10 @@
+services:
+  server:
+    image: ghcr.io/planktoscope/segmenter-node-red-dashboard:sha-df8fc69
+    ports:
+      - 1880:1880
+    volumes:
+      - ~/.local/share/planktoscope/data/img/:/home/pi/data/img/
+      - ~/.local/share/planktoscope/data/export/ecotaxa/:/home/pi/data/export/ecotaxa/
+    extra_hosts:
+      - host.docker.internal:host-gateway

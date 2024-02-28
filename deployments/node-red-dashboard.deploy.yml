@@ -1,0 +1,3 @@
+package: /deployments/node-red-dashboard
+features:
+disabled: false

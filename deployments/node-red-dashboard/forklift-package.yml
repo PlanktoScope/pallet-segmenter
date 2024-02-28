@@ -1,0 +1,45 @@
+package:
+  description: Web GUI for operating the PlanktoScope's segmenter
+  maintainers:
+    - name: Ethan Li
+      email: lietk12@gmail.com
+  license: GPL-3.0-or-later
+  sources:
+    - https://github.com/PlanktoScope/PlanktoScope
+
+deployment:
+  compose-files: [compose.yml]
+  requires:
+    services:
+      - tags: [mqtt-broker]
+        port: 1883
+        protocol: mqtt
+        nonblocking: true
+      - tags: [planktoscope-api-v2]
+        port: 1883
+        protocol: mqtt
+        paths:
+          - /segmenter/segment
+          - /status/segmenter
+          - /status/segmenter/name
+          - /status/segmenter/object_id
+          - /status/segmenter/metric
+    # TODO: add fileset dependencies for /home/pi/PlanktoScope/config.json, /home/pi/data/img,
+    # /home/pi/.local/etc/pkscope-distro/installer-versioning.yml,
+  provides:
+    listeners:
+      - description: Node-RED server providing an interactive dashboard to operate the segmenter
+        port: 1880
+        protocol: tcp
+    services:
+      - description: The Node-RED editor for the Node-RED dashboard
+        port: 1880
+        protocol: http
+        paths:
+          - /
+      - description: Node-RED graphical user interface for the segmenter
+        port: 1880
+        protocol: http
+        paths:
+          - /ui
+          - /ui/*

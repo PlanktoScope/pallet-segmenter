@@ -1,0 +1,19 @@
+package:
+  description: In-browser file manager for PlanktoScope datasets
+  maintainers:
+    - name: Ethan Li
+      email: lietk12@gmail.com
+  license: Apache-2.0
+  sources:
+    - https://github.com/filebrowser/filebrowser
+
+deployment:
+  compose-files: [compose.yml]
+  description: Provides a filebrowser server
+  provides:
+    services:
+      - description: File browser & manager for PlanktoScope's datasets
+        port: 9000
+        protocol: http
+        paths:
+          - /*

@@ -1,0 +1,6 @@
+forklift-version: v0.4.0
+
+repository:
+  path: github.com/PlanktoScope/pallet-segmenter
+  description: Packages to help with running the PlanktoScope's segmenter separately on a computer
+  readme-file: README.md

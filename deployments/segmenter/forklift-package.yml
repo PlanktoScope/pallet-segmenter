@@ -1,0 +1,34 @@
+package:
+  description: PlanktoScope object segmenter for export to EcoTaxa
+  maintainers:
+    - name: Ethan Li
+      email: lietk12@gmail.com
+  license: GPL-3.0-or-later
+  sources:
+    - https://github.com/PlanktoScope/device-backend
+
+deployment:
+  compose-files: [compose.yml]
+  requires:
+    services:
+      - tags: [mqtt-broker]
+        port: 1883
+        protocol: mqtt
+        nonblocking: false # absence of the MQTT server is not yet handled
+  provides:
+    services:
+      - description: MQTT handling of segmenter commands and broadcasting of segmenter statuses
+        tags: [planktoscope-api-v2]
+        port: 1883
+        protocol: mqtt
+        paths:
+          - /segmenter/segment
+          - /status/segmenter
+          - /status/segmenter/name
+          - /status/segmenter/object_id
+          - /status/segmenter/metric
+
+features:
+  dev-src:
+    description: Allows the source code to be overwritten from an existing codebase for development & troubleshooting
+    compose-files: [compose-dev-src.yml]

@@ -1,0 +1,9 @@
+services:
+  worker:
+    image: ghcr.io/planktoscope/device-backend-processing-segmenter:sha-ebd357f
+    volumes:
+      - ./machine-name:/var/lib/planktoscope/machine-name
+      - ~/.local/share/planktoscope/data:/home/pi/data
+      - ~/.local/share/planktoscope/device-backend-logs/processing/segmenter:/home/pi/device-backend-logs/processing/segmenter
+    extra_hosts:
+      - host.docker.internal:host-gateway
