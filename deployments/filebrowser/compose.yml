@@ -1,6 +1,6 @@
 services:
   server:
-    image: filebrowser/filebrowser:v2.27.0
+    image: docker.io/filebrowser/filebrowser:v2.27.0
     ports:
       - 9000:80
     volumes:
