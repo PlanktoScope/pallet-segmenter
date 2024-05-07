@@ -46,18 +46,6 @@ If your user is [in the `docker` group](https://docs.docker.com/engine/install/l
 forklift pallet switch --apply github.com/PlanktoScope/pallet-segmenter@edge
 ```
 
-Then you can access the Node-RED dashboard from your web browser at
-<http://localhost:1880/ui>, or you can programmatically interact with the segmenter over MQTT via
-<mqtt://localhost:1883> (e.g. using [github.com/PlanktoScope/cli](https://github.com/PlanktoScope/cli)).
-You can also access the Node-RED dashboard editor from your web browser at <http://localhost:1880/admin>.
-
-The segmenter loads input datasets - and saves output files - in `~/.local/share/planktoscope/data`,
-instead of the usual path on PlanktoScopes (`/home/pi/data`). Similarly, logs are saved in
-`~/.local/share/planktoscope/device-backend-logs` instead of `/home/pi/device-backend-logs`.
-The simplest way to add input datasets and download EcoTaxa export archives (working around issues
-with file permissions between your user account and the `root` user used for running the segmenter)
-will be to use the filebrowser in your web browser, at <http://localhost:9000>.
-
 #### Subsequent deployment
 
 Because the `forklift` tool uses [Docker Compose](https://docs.docker.com/compose/) to manage the
@@ -73,6 +61,30 @@ Or if your user is in the `docker` group:
 ```
 forklift stage apply
 ```
+
+#### Operation
+
+After you have applied the pallet so that the containers are running, you can access the Node-RED
+dashboard from your web browser at <http://localhost:1880/ui>, or you can programmatically interact
+with the segmenter over MQTT via <mqtt://localhost:1883> (e.g. using
+[github.com/PlanktoScope/cli](https://github.com/PlanktoScope/cli)).
+You can also access the Node-RED dashboard editor from your web browser at
+<http://localhost:1880/admin>.
+
+The segmenter loads input datasets - and saves output files - in folders within
+`~/.local/share/planktoscope/data`, instead of the usual path on PlanktoScopes (`/home/pi/data`).
+Similarly, logs are saved in `~/.local/share/planktoscope/device-backend-logs` instead of
+`/home/pi/device-backend-logs`. The simplest way to add input datasets and download EcoTaxa export
+archives (working around issues with file permissions between your user account and the `root` user
+used for running the segmenter) will be to use the filebrowser app in your web browser, at
+<http://localhost:9000>.
+
+Before you can use the Node-RED dashboard, you will need to create a folder at
+`~/.local/share/planktoscope/data/img` (which you can do by just using the filebrowser app to create
+a new folder named `img` in the top level, at <http://localhost:9000/files/>), and then you should
+upload/copy your input datasets into that folder. Then you can press the "Update acquisition's
+folder list" button in the Node-RED dashboard, which should cause your input datasets to be listed
+in the dashboard.
 
 ### Forking
 
