@@ -46,11 +46,17 @@ If your user is [in the `docker` group](https://docs.docker.com/engine/install/l
 forklift pallet switch --apply github.com/PlanktoScope/pallet-segmenter@edge
 ```
 
+When this pallet is updated on GitHub and you want to apply the latest changes on your computer, you
+can use the same command as above (either
+`forklift pallet switch --apply github.com/PlanktoScope/pallet-segmenter@edge` or that command with
+`sudo -E`) to clone, stage, and apply the updated version of the pallet.
+
 #### Subsequent deployment
 
 Because the `forklift` tool uses [Docker Compose](https://docs.docker.com/compose/) to manage the
-Docker containers specified by this pallet, the containers will not run after the next time you
-restart your computer; you will need to run a command to start the containers again:
+Docker containers specified by this pallet, the containers will not be running after you restart
+your computer (this is true each time you restart your computer); you will need to run a command to
+start the containers again:
 
 ```
 sudo -E forklift stage apply
