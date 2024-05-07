@@ -16,6 +16,10 @@ deployment:
         protocol: mqtt
         nonblocking: false # absence of the MQTT server is not yet handled
   provides:
+    listeners:
+      - description: HTTP server to serve previews of segmented objects
+        port: 8001
+        protocol: tcp
     services:
       - description: MQTT handling of segmenter commands and broadcasting of segmenter statuses
         tags: [planktoscope-api-v2]
@@ -27,6 +31,12 @@ deployment:
           - /status/segmenter/name
           - /status/segmenter/object_id
           - /status/segmenter/metric
+      - description: Last segmented object MJPEG stream from the segmenter
+        tags: [mjpeg-stream]
+        port: 8001
+        protocol: http
+        paths:
+          - /object.mjpg
 
 features:
   dev-src:

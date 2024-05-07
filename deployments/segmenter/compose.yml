@@ -1,6 +1,8 @@
 services:
   worker:
     image: ghcr.io/planktoscope/device-backend-processing-segmenter:sha-ebd357f
+    ports:
+      - 8001:8001
     volumes:
       - ./machine-name:/var/lib/planktoscope/machine-name
       - ~/.local/share/planktoscope/data:/home/pi/data
