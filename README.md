@@ -21,17 +21,17 @@ that currently `forklift` is only tested for Linux computers.
 
 ### Deployment
 
-You can clone the latest commit of this Forklift pallet to your computer, by
+The instructions below assume that you are using a version of the `forklift` tool which is greater
+than or equal to v0.7.0 (but less than v0.8.0, which has not yet been released yet); other versions
+of the `forklift` tool may behave differently and thus may require different commands than what is
+described below:
+
+#### First-time deployment
+
+You can clone, stage, and apply the latest commit of this Forklift pallet to your computer, by
 using the `forklift` tool:
 ```
-forklift plt clone github.com/PlanktoScope/pallet-segmenter@main
-```
-
-Then you can apply the cloned pallet on your computer using the following sequence of `forklift`
-CLI commands:
-```
-forklift plt cache-repo
-sudo -E forklift plt apply
+sudo -E forklift pallet switch --apply github.com/PlanktoScope/pallet-segmenter@edge
 ```
 
 Warning: this will replace all Docker containers on your Docker host with the package deployments
@@ -39,11 +39,11 @@ specified by this pallet and delete any Docker containers not specified by this 
 deployments.
 
 If your user is [in the `docker` group](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
-(so that you don't need to use `sudo` when running `docker`
-commands), then you can just run a single command instead of the three commands listed above:
+(so that you don't need to use `sudo` when running `docker` commands), then you can avoid using
+`sudo` with the `forklift` command:
 
 ```
-forklift plt switch github.com/PlanktoScope/pallet-segmenter@main
+forklift pallet switch --apply github.com/PlanktoScope/pallet-segmenter@edge
 ```
 
 Then you can access the Node-RED dashboard from your web browser at
@@ -57,6 +57,22 @@ instead of the usual path on PlanktoScopes (`/home/pi/data`). Similarly, logs ar
 The simplest way to add input datasets and download EcoTaxa export archives (working around issues
 with file permissions between your user account and the `root` user used for running the segmenter)
 will be to use the filebrowser in your web browser, at <http://localhost:9000>.
+
+#### Subsequent deployment
+
+Because the `forklift` tool uses [Docker Compose](https://docs.docker.com/compose/) to manage the
+Docker containers specified by this pallet, the containers will not run after the next time you
+restart your computer; you will need to run a command to start the containers again:
+
+```
+sudo -E forklift stage apply
+```
+
+Or if your user is in the `docker` group:
+
+```
+forklift stage apply
+```
 
 ### Forking
 
