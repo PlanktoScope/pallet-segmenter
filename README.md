@@ -17,13 +17,14 @@ available [here](https://docs.docker.com/engine/install/).
 Then, you will need to set up the [`forklift`](https://github.com/PlanktoScope/forklift) tool on
 your computer. Setup instructions are available
 [here](https://github.com/PlanktoScope/forklift?tab=readme-ov-file#downloadinstall-forklift). Note
-that currently `forklift` is only tested for Linux computers.
+that currently `forklift` is only tested for Linux computers, and that Forklift is still an
+experimental prototype.
 
 ### Deployment
 
 The instructions below assume that you are using a version of the `forklift` tool which is greater
-than or equal to v0.7.0 (but less than v0.8.0, which has not yet been released yet); other versions
-of the `forklift` tool may behave differently and thus may require different commands than what is
+than or equal to v0.7.0 (but less than v0.8.0, which has not been released yet); other versions of
+the `forklift` tool may behave differently and thus may require different commands than what is
 described below:
 
 #### First-time deployment
@@ -39,8 +40,8 @@ specified by this pallet and delete any Docker containers not specified by this 
 deployments.
 
 If your user is [in the `docker` group](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
-(so that you don't need to use `sudo` when running `docker` commands), then you can avoid using
-`sudo` with the `forklift` command:
+(so that you don't need to use `sudo` when running `docker` commands), then you don't need to use
+`sudo` with `forklift`:
 
 ```
 forklift pallet switch --apply github.com/PlanktoScope/pallet-segmenter@edge
@@ -72,7 +73,7 @@ forklift stage apply
 
 After you have applied the pallet so that the containers are running, you can access the Node-RED
 dashboard from your web browser at <http://localhost:1880/ui>, or you can programmatically interact
-with the segmenter over MQTT via <mqtt://localhost:1883> (e.g. using
+with the segmenter over MQTT via `mqtt://localhost:1883` (e.g. using
 [github.com/PlanktoScope/cli](https://github.com/PlanktoScope/cli)).
 You can also access the Node-RED dashboard editor from your web browser at
 <http://localhost:1880/admin>.
@@ -87,10 +88,9 @@ used for running the segmenter) will be to use the filebrowser app in your web b
 
 Before you can use the Node-RED dashboard, you will need to create a folder at
 `~/.local/share/planktoscope/data/img` (which you can do by just using the filebrowser app to create
-a new folder named `img` in the top level, at <http://localhost:9000/files/>), and then you should
-upload/copy your input datasets into that folder. Then you can press the "Update acquisition's
-folder list" button in the Node-RED dashboard, which should cause your input datasets to be listed
-in the dashboard.
+a new folder named `img` at <http://localhost:9000/files/>), and then you should upload/copy your
+input datasets into that folder. Then you can press the "Update acquisition's folder list" button in
+the Node-RED dashboard, which should cause your input datasets to be listed in the dashboard.
 
 ### Forking
 
