@@ -4,7 +4,6 @@ services:
     ports:
       - 1880:1880
     volumes:
-      - ~/.local/share/planktoscope/data/img/:/home/pi/data/img/
-      - ~/.local/share/planktoscope/data/export/ecotaxa/:/home/pi/data/export/ecotaxa/
+      - ~/.local/share/planktoscope/data/:/home/pi/data/
     extra_hosts:
       - host.docker.internal:host-gateway
