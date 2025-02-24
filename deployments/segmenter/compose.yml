@@ -1,6 +1,6 @@
 services:
   worker:
-    image: ghcr.io/planktoscope/device-backend-processing-segmenter:pr-70
+    image: ghcr.io/planktoscope/device-backend-processing-segmenter:pr-74
     ports:
       - 8001:8001
     volumes:

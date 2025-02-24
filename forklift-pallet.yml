@@ -1,4 +1,4 @@
-forklift-version: v0.5.2
+forklift-version: v0.7.2-alpha.3
 
 pallet:
   path: github.com/PlanktoScope/pallet-segmenter

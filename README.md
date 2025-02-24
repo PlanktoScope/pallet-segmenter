@@ -23,11 +23,21 @@ experimental prototype.
 ### Deployment
 
 The instructions below assume that you are using a version of the `forklift` tool which is greater
-than or equal to v0.7.0 (but less than v0.8.0, which has not been released yet); other versions of
+than or equal to v0.7.2; other versions of
 the `forklift` tool may behave differently and thus may require different commands than what is
 described below:
 
 #### First-time deployment
+
+To set up correct file permissions, you should first run the following commands:
+```
+mkdir -p ~/.local/share/planktoscope/data/img
+mkdir -p ~/.local/share/planktoscope/device-backend-logs/processing/segmenter
+```
+If these commands fail, you should back up anything you don't want to lose in `~/.local/share/planktoscope` and then delete it by running the following command before running the above commands again:
+```
+sudo rm -rf ~/.local/share/planktoscope
+```
 
 You can clone, stage, and apply the latest commit of this Forklift pallet to your computer, by
 using the `forklift` tool:
@@ -82,15 +92,12 @@ The segmenter loads input datasets - and saves output files - in folders within
 `~/.local/share/planktoscope/data`, instead of the usual path on PlanktoScopes (`/home/pi/data`).
 Similarly, logs are saved in `~/.local/share/planktoscope/device-backend-logs` instead of
 `/home/pi/device-backend-logs`. The simplest way to add input datasets and download EcoTaxa export
-archives (working around issues with file permissions between your user account and the `root` user
-used for running the segmenter) will be to use the filebrowser app in your web browser, at
-<http://localhost:9000>.
+archives will be to use the filebrowser app in your web browser, at <http://localhost:9000>.
 
-Before you can use the Node-RED dashboard, you will need to create a folder at
-`~/.local/share/planktoscope/data/img` (which you can do by just using the filebrowser app to create
-a new folder named `img` at <http://localhost:9000/files/>), and then you should upload/copy your
-input datasets into that folder. Then you can press the "Update acquisition's folder list" button in
-the Node-RED dashboard, which should cause your input datasets to be listed in the dashboard.
+To upload input datasets to the segmenter, copy them into `~/.local/share/planktoscope/data/img`
+(which you can do do using the filebrowser app at <http://localhost:9000>). Then you can press the
+"Update acquisition's folder list" button in the Node-RED dashboard, which should cause your input
+datasets to be listed in the dashboard.
 
 ### Forking
 
