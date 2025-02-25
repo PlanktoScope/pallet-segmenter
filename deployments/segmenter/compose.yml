@@ -6,6 +6,15 @@ services:
     volumes:
       - ./machine-name:/var/lib/planktoscope/machine-name
       - ~/.local/share/planktoscope/data:/home/pi/data
-      - ~/.local/share/planktoscope/device-backend-logs/processing/segmenter:/home/pi/device-backend-logs/processing/segmenter
+      - ~/.local/share/planktoscope/device-backend-logs:/home/pi/device-backend-logs
     extra_hosts:
       - host.docker.internal:host-gateway
+    depends_on:
+      bind-mount-setup:
+        condition: service_completed_successfully
+  bind-mount-setup:
+    image: docker.io/library/alpine:3.21.3
+    volumes:
+      - ~/.local/share/planktoscope/data:/home/pi/data
+      - ~/.local/share/planktoscope/device-backend-logs:/home/pi/device-backend-logs
+    command: 'sh -c "chown -R 1000:1000 /home/pi/data /home/pi/device-backend-logs"'

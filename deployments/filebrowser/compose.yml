@@ -4,12 +4,13 @@ services:
     ports:
       - 9000:9000
     volumes:
-      - ~/.local/share/planktoscope/data/:/home/pi/data/
-      - ~/.local/share/planktoscope/data/:/srv # this prevents filebrowser from making an unnamed volume
+      - ~/.local/share/planktoscope/data:/home/pi/data
+      - ~/.local/share/planktoscope/data:/srv # this prevents filebrowser from making an unnamed volume
       - server-data:/database
     environment:
       - FB_DATABASE=/database/filebrowser.db
       - FB_ROOT=/home/pi/data
+      # We must assign a port which is available to non-root users:
       - FB_PORT=9000
       - FB_NOAUTH=true
     user: '1000:1000'
@@ -20,10 +21,7 @@ services:
     image: docker.io/library/alpine:3.21.3
     volumes:
       - server-data:/database
-    entrypoint:
-      - 'sh'
-      - '-c'
-      - 'chown -R 1000:1000 /database'
+    command: 'sh -c "chown -R 1000:1000 /database"'
 
 volumes:
   server-data: {}

@@ -29,16 +29,6 @@ described below:
 
 #### First-time deployment
 
-To set up correct file permissions, you should first run the following commands:
-```
-mkdir -p ~/.local/share/planktoscope/data/img
-mkdir -p ~/.local/share/planktoscope/device-backend-logs/processing/segmenter
-```
-If these commands fail, you should back up anything you don't want to lose in `~/.local/share/planktoscope` and then delete it by running the following command before running the above commands again:
-```
-sudo rm -rf ~/.local/share/planktoscope
-```
-
 You can clone, stage, and apply the latest commit of this Forklift pallet to your computer, by
 using the `forklift` tool:
 ```
