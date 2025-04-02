@@ -87,7 +87,14 @@ archives will be to use the filebrowser app in your web browser, at <http://loca
 To upload input datasets to the segmenter, copy them into `~/.local/share/planktoscope/data/img`
 (which you can do do using the filebrowser app at <http://localhost:9000>). Then you can press the
 "Update acquisition's folder list" button in the Node-RED dashboard, which should cause your input
-datasets to be listed in the dashboard.
+datasets to be listed in the dashboard. For testing, you can download
+[this example dataset](https://drive.google.com/drive/folders/1g6OPaUIhYkU2FPqtIK4AW6U4FYmhFxuw)
+as a `.zip` archive, unzip it into a new directory, and then copy/upload that directory into
+`~/.local/share/planktoscope/data/img`, for example resulting in a new directory at
+`~/.local/share/planktoscope/data/img/BTS2023_S3_A2` with 29 `.jpg` files, a `metadata.json` file,
+and a few other irrelevant files. Then a new dataset named `BTS2023_S3_A2` should show up in the
+Node-RED dashboard after you press the "Update acquisition's folder list" button. If you run the
+segmenter on that dataset, the segmenter should segment approximately 365 objects.
 
 ### Forking
 
