@@ -14,4 +14,4 @@ services:
     image: docker.io/library/alpine:3.21.3
     volumes:
       - ~/.local/share/planktoscope/data:/home/pi/data
-    command: 'sh -c "chown -R 1000:1000 /home/pi/data"'
+    command: 'sh -c "chown -R 1000:1000 /home/pi/data && sleep 60"'

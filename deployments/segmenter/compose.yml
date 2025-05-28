@@ -7,6 +7,8 @@ services:
       - ./machine-name:/run/machine-name
       - ~/.local/share/planktoscope/data:/home/pi/data
       - ~/.local/share/planktoscope/device-backend-logs:/home/pi/device-backend-logs
+    environment:
+      LOGURU_LEVEL: INFO
     extra_hosts:
       - host.docker.internal:host-gateway
     depends_on:
@@ -17,4 +19,4 @@ services:
     volumes:
       - ~/.local/share/planktoscope/data:/home/pi/data
       - ~/.local/share/planktoscope/device-backend-logs:/home/pi/device-backend-logs
-    command: 'sh -c "chown -R 1000:1000 /home/pi/data /home/pi/device-backend-logs"'
+    command: 'sh -c "chown -R 1000:1000 /home/pi/data /home/pi/device-backend-logs && sleep 60"'

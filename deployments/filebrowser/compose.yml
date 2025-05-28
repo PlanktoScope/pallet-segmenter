@@ -21,7 +21,7 @@ services:
     image: docker.io/library/alpine:3.21.3
     volumes:
       - server-data:/database
-    command: 'sh -c "chown -R 1000:1000 /database"'
+    command: 'sh -c "chown -R 1000:1000 /database && sleep 60"'
 
 volumes:
   server-data: {}
