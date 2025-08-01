@@ -4,7 +4,7 @@ services:
     ports:
       - 8001:8001
     volumes:
-      - ./machine-name:/run/machine-name
+      - ./machine-name:/var/lib/planktoscope/machine-name
       - ~/.local/share/planktoscope/data:/home/pi/data
       - ~/.local/share/planktoscope/device-backend-logs:/home/pi/device-backend-logs
     environment:
